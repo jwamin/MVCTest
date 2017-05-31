@@ -13,6 +13,7 @@
 		3D8B283A1EDE397D00B99955 /* MVCTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B28381EDE397D00B99955 /* MVCTest.xcdatamodeld */; };
 		3D8B283C1EDE397D00B99955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D8B283B1EDE397D00B99955 /* Assets.xcassets */; };
 		3D8B283F1EDE397D00B99955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8B283D1EDE397D00B99955 /* LaunchScreen.storyboard */; };
+		3D8B28471EDE4BBD00B99955 /* TestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B28461EDE4BBD00B99955 /* TestModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3D8B283B1EDE397D00B99955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D8B283E1EDE397D00B99955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D8B28401EDE397D00B99955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D8B28461EDE4BBD00B99955 /* TestModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				3D8B28311EDE397D00B99955 /* AppDelegate.swift */,
+				3D8B28461EDE4BBD00B99955 /* TestModal.swift */,
 				3D8B28331EDE397D00B99955 /* ViewController.swift */,
 				3D8B28351EDE397D00B99955 /* Main.storyboard */,
 				3D8B283B1EDE397D00B99955 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 				3D8B283A1EDE397D00B99955 /* MVCTest.xcdatamodeld in Sources */,
 				3D8B28341EDE397D00B99955 /* ViewController.swift in Sources */,
 				3D8B28321EDE397D00B99955 /* AppDelegate.swift in Sources */,
+				3D8B28471EDE4BBD00B99955 /* TestModal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
