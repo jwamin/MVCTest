@@ -17,6 +17,10 @@ class ViewController: UIViewController {
         myModel = TestModal();
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name.init(rawValue: "incrementOccurred"), object: nil)
+        
+        let gr = UILongPressGestureRecognizer(target: self, action: #selector(cdSave))
+        self.view.addGestureRecognizer(gr)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +34,11 @@ class ViewController: UIViewController {
     
     @IBAction func updateUI(){
         print(myModel.taps)
+    }
+    
+    func cdSave(){
+        print("got gesture")
+        myModel.commitToCore()
     }
     
 }
