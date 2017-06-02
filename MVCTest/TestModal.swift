@@ -13,47 +13,91 @@ import Foundation
 class TestModal: NSObject {
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
-    var moc:NSManagedObjectContext
+    var moc:NSManagedObjectContext!
     var taps:Int!
+    var cdObject:Clicks!
     
     override init() {
+        super.init()
         
         let persistentContainer = delegate.persistentContainer
         
         moc = persistentContainer.newBackgroundContext()
-        let clicksFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Clicks")
         
-        do {
-            let fetchedclicks = try moc.fetch(clicksFetch) as! [Clicks]
-            if let sometaps = fetchedclicks.last?.number {
-              taps = Int(sometaps)
-            } else {
-                taps = 0
-            }
-        } catch {
-            fatalError("Failed to fetch employees: \(error)")
-        }
-        
-        
-        //set value of taps to 0 or the contents of CoreData index var
+        initEntity()
+
         
     }
     
     func incrementTaps(){
-        taps = taps + 1;
+        taps! += 1;
         
         NotificationCenter.default.post(name:NSNotification.Name(rawValue: "incrementOccurred"), object: nil)
     }
     
     func commitToCore(){
+        var obj:Clicks!
         
-        let clickobject = NSEntityDescription.insertNewObject(forEntityName: "Clicks", into: moc) as! Clicks
-        clickobject.number = Int64(taps)
-        print(clickobject)
+        if let objtest = cdObject{
+            obj = objtest
+        } else {
+            obj = NSEntityDescription.insertNewObject(forEntityName: "Clicks", into: moc) as! Clicks
+        }
+        
+        obj.number = Int64(taps);
+        
         do {
             try moc.save()
         } catch {
             fatalError()
+        }
+        
+    }
+    
+    func initEntity(){
+        
+        let clicksFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Clicks")
+        
+        do {
+            
+            let fetchedclicks = try moc.fetch(clicksFetch) as! [Clicks]
+            
+            for thisClick in fetchedclicks{
+                
+                print(thisClick.number)
+                
+            }
+            
+            if let object = fetchedclicks.last {
+                
+                cdObject = object
+                taps = Int(cdObject.number)
+                
+            } else {
+                
+                taps = 0
+                
+            }
+            
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue: "incrementOccurred"), object: nil)
+            
+        } catch {
+            
+            fatalError("Failed to fetch Clicks: \(error)")
+            
+        }
+
+    }
+    
+    func clearCore(){
+
+            moc.delete(cdObject)
+            cdObject = nil
+            do {
+                try moc.save()
+                initEntity()
+            } catch {
+            fatalError("Failed to fetch clicks: \(error)")
         }
     }
     

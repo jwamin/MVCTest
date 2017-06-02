@@ -12,14 +12,14 @@ class ViewController: UIViewController {
 
     var myModel:TestModal!
     
+    @IBOutlet weak var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         myModel = TestModal();
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name.init(rawValue: "incrementOccurred"), object: nil)
         
-        let gr = UILongPressGestureRecognizer(target: self, action: #selector(cdSave))
-        self.view.addGestureRecognizer(gr)
+        self.updateUI()
         
     }
 
@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     
     @IBAction func updateUI(){
         print(myModel.taps)
+        label.text = String(myModel.taps)
     }
     
     func cdSave(){
@@ -41,5 +42,23 @@ class ViewController: UIViewController {
         myModel.commitToCore()
     }
     
+    @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
+        
+        switch(sender.state){
+        case .began:
+            print("long press began")
+            break
+        case .ended:
+            print("long press ended")
+            myModel.commitToCore()
+            break
+        default: break
+            
+        }
+        
+    }
+    @IBAction func reset(_ sender: Any) {
+        myModel.clearCore()
+    }
 }
 
