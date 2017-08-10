@@ -17,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D76BF331EE6E30600B1674A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		3D76BF341EE6E30600B1674A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		3D76BF371EE6E39400B1674A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D8B282E1EDE397D00B99955 /* MVCTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D8B28311EDE397D00B99955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D8B28331EDE397D00B99955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +45,9 @@
 		3D8B28251EDE397D00B99955 = {
 			isa = PBXGroup;
 			children = (
+				3D76BF371EE6E39400B1674A /* .gitignore */,
+				3D76BF331EE6E30600B1674A /* LICENSE */,
+				3D76BF341EE6E30600B1674A /* README.md */,
 				3D8B28301EDE397D00B99955 /* MVCTest */,
 				3D8B282F1EDE397D00B99955 /* Products */,
 			);
@@ -310,6 +316,7 @@
 				3D8B28451EDE397D00B99955 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

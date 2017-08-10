@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,13 +35,25 @@
                                     <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dHb-I7-GpO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00:0000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laV-vL-dkj">
+                                <rect key="frame" x="128" y="352" width="118" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FdX-UY-6U5"/>
+                                    <constraint firstAttribute="width" constant="118" id="ngP-Ot-30h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7cv-Hw-oMP" secondAttribute="bottom" constant="20" id="9az-Gc-Xh4"/>
                             <constraint firstItem="DiE-gv-SJF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="F38-vV-YIF"/>
+                            <constraint firstItem="laV-vL-dkj" firstAttribute="top" secondItem="DiE-gv-SJF" secondAttribute="bottom" constant="8" id="Js1-fg-tMJ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="7cv-Hw-oMP" secondAttribute="leading" id="OWq-Ee-xVm"/>
+                            <constraint firstItem="laV-vL-dkj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="daM-1N-w3x"/>
                             <constraint firstItem="DiE-gv-SJF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jyo-5q-thc"/>
                         </constraints>
                         <connections>
@@ -50,6 +62,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="DiE-gv-SJF" id="ucr-yA-Hdm"/>
+                        <outlet property="timerLabel" destination="laV-vL-dkj" id="4r9-qD-gVl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

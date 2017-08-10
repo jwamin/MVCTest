@@ -15,6 +15,7 @@ class TestModal: NSObject {
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var moc:NSManagedObjectContext!
     var taps:Int!
+    var date:NSDate!
     var cdObject:Clicks!
     
     override init() {
@@ -25,13 +26,12 @@ class TestModal: NSObject {
         moc = persistentContainer.newBackgroundContext()
         
         initEntity()
-
         
     }
     
     func incrementTaps(){
         taps! += 1;
-        
+        date = NSDate()
         NotificationCenter.default.post(name:NSNotification.Name(rawValue: "incrementOccurred"), object: nil)
     }
     
@@ -45,9 +45,11 @@ class TestModal: NSObject {
         }
         
         obj.number = Int64(taps);
+        obj.date = date
         
         do {
             try moc.save()
+            cdObject = obj
         } catch {
             fatalError()
         }
@@ -55,12 +57,14 @@ class TestModal: NSObject {
     }
     
     func initEntity(){
-        
+        print("initialising entity")
         let clicksFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Clicks")
         
         do {
             
             let fetchedclicks = try moc.fetch(clicksFetch) as! [Clicks]
+            
+            print("number of managed objects in context: \(fetchedclicks.count)")
             
             for thisClick in fetchedclicks{
                 
@@ -72,11 +76,11 @@ class TestModal: NSObject {
                 
                 cdObject = object
                 taps = Int(cdObject.number)
-                
+                date = cdObject.date
             } else {
                 
                 taps = 0
-                
+                date = NSDate()
             }
             
             NotificationCenter.default.post(name:NSNotification.Name(rawValue: "incrementOccurred"), object: nil)
@@ -90,11 +94,15 @@ class TestModal: NSObject {
     }
     
     func clearCore(){
-
-            moc.delete(cdObject)
-            cdObject = nil
+        guard (cdObject) != nil else{
+            print("no cdobject")
+            return
+        }
+        
             do {
+                moc.delete(cdObject)
                 try moc.save()
+                cdObject = nil
                 initEntity()
             } catch {
             fatalError("Failed to fetch clicks: \(error)")
